@@ -1,0 +1,92 @@
+{
+  "name": "Sofinco",
+  "scopeName": "source.sofinco",
+  "fileTypes": ["sofinco"],
+  "patterns": [
+    {
+      "name": "comment.line.number-sign.sofinco",
+      "match": "#.*$"
+    },
+    {
+      "name": "keyword.control.sofinco",
+      "match": "\\b(nakko|nakkopa|narekko|wennang|wennangpa|naiya|ulangi|sedding|tappai|laoi|lewati|coba|nakkosala|nakkosedding|bangkitki|kudu|pilih|kasus)\\b"
+    },
+    {
+      "name": "keyword.other.sofinco",
+      "match": "\\b(pangngaseng|pangngadereng|baliki|pole|kelas|pangngassengang|impor|riboko|siaganga|lambda|fungsi_singkat|yield|async|await|global|mendunia|nonlocal|tidak_lokal|del|hapus|dengan|inisialisasi|statis|kelas_metode|properti)\\b"
+    },
+    {
+      "name": "constant.language.sofinco",
+      "match": "\\b(makanja|makasiri|demakanja|tamakasiri|taniaapa|kosong|tannia)\\b"
+    },
+    {
+      "name": "support.function.builtin.sofinco",
+      "match": "\\b(paccerak|cetak|passuluak|terima|jangka|carakna|jumlahki|palingciddi|palinglompo|urutki|balikkidaptar|bukka|baca_berkas|baca|tulis|tutup|bacabarisa|bacasemua|tambai|burakne|urutkanki|balikidaptar|sisipki|hapuski|bersihki|hitungki|indexki|sappai|gantiki|lompo|ciddi|pecaki|gabungki|hitungurut|gabung_daptar|petakan|saring|semua|ada|mutlak|bulatki|pangkat|tipe|daftar_atribut|variabel|bantuan|evaluasi|eksekusi|kompilasi|formatki|karakter|nilai_karakter|heksadesimal|oktal|biner|iris|induk|kunci|nilai|pasangan|ambilki|perbaharui|salinki|copyaki|extendki|tambahki|buangki|gabungan|irisan|selisih|selisih_simetris|kapital|judul|potongki|mulai_dengan|akhiri_dengan|huruf_semua|angka_semua|huruf_angka|spasi_semua|ciddi_semua|lompo_semua|isi_nol|tengahki|kiri_rata|kanan_rata|tukar_huruf|enkode|dekode)\\b"
+    },
+    {
+      "name": "support.type.sofinco",
+      "match": "\\b(bilanga|uwinru|aksara|sura|desimal|daptar|kumpulan|tupel|peta|pada|himpunan|bolean|bytes|objek)\\b"
+    },
+    {
+      "name": "keyword.operator.logical.sofinco",
+      "match": "\\b(rilaleng|taniarilaleng|sisamaya|taniasisamaya|dan|atau|tania)\\b"
+    },
+    {
+      "name": "string.quoted.double.sofinco",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.sofinco",
+          "match": "\\\\."
+        }
+      ]
+    },
+    {
+      "name": "string.quoted.single.sofinco",
+      "begin": "'",
+      "end": "'",
+      "patterns": [
+        {
+          "name": "constant.character.escape.sofinco",
+          "match": "\\\\."
+        }
+      ]
+    },
+    {
+      "name": "string.quoted.triple.sofinco",
+      "begin": "\"\"\"",
+      "end": "\"\"\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.sofinco",
+          "match": "\\\\."
+        }
+      ]
+    },
+    {
+      "name": "constant.numeric.sofinco",
+      "match": "\\b[0-9]+(\\.[0-9]+)?([eE][+-]?[0-9]+)?\\b"
+    },
+    {
+      "name": "constant.numeric.hex.sofinco",
+      "match": "\\b0[xX][0-9a-fA-F]+\\b"
+    },
+    {
+      "name": "constant.numeric.octal.sofinco",
+      "match": "\\b0[oO][0-7]+\\b"
+    },
+    {
+      "name": "constant.numeric.binary.sofinco",
+      "match": "\\b0[bB][01]+\\b"
+    },
+    {
+      "name": "entity.name.function.sofinco",
+      "match": "(?<=pangngaseng\\s)\\w+|(?<=pangngadereng\\s)\\w+"
+    },
+    {
+      "name": "entity.name.class.sofinco",
+      "match": "(?<=kelas\\s)\\w+|(?<=pangngassengang\\s)\\w+"
+    }
+  ]
+}

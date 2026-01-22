@@ -1,0 +1,29 @@
+{
+  "name": "sofinco-vscode",
+  "displayName": "Sofinco Language Support",
+  "description": "Syntax highlighting untuk Bahasa Pemrograman Bugis-Makassar (Sofinco)",
+  "version": "1.0.0",
+  "publisher": "sofinco",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": ["Programming Languages"],
+  "keywords": ["sofinco", "bugis", "makassar", "bahasa", "indonesia"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "sofinco",
+        "aliases": ["Sofinco", "sofinco"],
+        "extensions": [".sofinco"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "sofinco",
+        "scopeName": "source.sofinco",
+        "path": "./syntaxes/sofinco.tmLanguage.json"
+      }
+    ]
+  }
+}

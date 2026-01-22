@@ -1,0 +1,126 @@
+%YAML 1.2
+---
+name: Sofinco
+file_extensions: [sofinco]
+scope: source.sofinco
+
+contexts:
+  main:
+    - include: comments
+    - include: strings
+    - include: numbers
+    - include: keywords
+    - include: constants
+    - include: functions
+    - include: types
+    - include: operators
+
+  comments:
+    - match: '#.*$'
+      scope: comment.line.sofinco
+
+  strings:
+    - match: '"""'
+      push: triple_double_string
+    - match: "'''"
+      push: triple_single_string
+    - match: '"'
+      push: double_string
+    - match: "'"
+      push: single_string
+
+  triple_double_string:
+    - meta_scope: string.quoted.triple.sofinco
+    - match: '"""'
+      pop: true
+    - include: string_escape
+
+  triple_single_string:
+    - meta_scope: string.quoted.triple.sofinco
+    - match: "'''"
+      pop: true
+    - include: string_escape
+
+  double_string:
+    - meta_scope: string.quoted.double.sofinco
+    - match: '"'
+      pop: true
+    - include: string_escape
+
+  single_string:
+    - meta_scope: string.quoted.single.sofinco
+    - match: "'"
+      pop: true
+    - include: string_escape
+
+  string_escape:
+    - match: '\\.'
+      scope: constant.character.escape.sofinco
+
+  keywords:
+    - match: '\b(nakko|nakkopa|narekko|wennang|wennangpa|naiya|ulangi|sedding|tappai|laoi|lewati|pilih|kasus)\b'
+      scope: keyword.control.sofinco
+    - match: '\b(pangngaseng|pangngadereng|baliki|pole|kelas|pangngassengang|impor|riboko|siaganga|lambda|fungsi_singkat|yield|async|await)\b'
+      scope: keyword.other.sofinco
+    - match: '\b(coba|nakkosala|nakkosedding|bangkitki|kudu)\b'
+      scope: keyword.control.exception.sofinco
+    - match: '\b(global|mendunia|nonlocal|tidak_lokal|del|hapus|dengan|inisialisasi|statis|kelas_metode|properti)\b'
+      scope: keyword.other.sofinco
+
+  constants:
+    - match: '\b(makanja|makasiri|demakanja|tamakasiri|taniaapa|kosong|tannia)\b'
+      scope: constant.language.sofinco
+
+  functions:
+    - match: '\b(paccerak|cetak|passuluak|terima|jangka|carakna|jumlahki|palingciddi|palinglompo)\b'
+      scope: support.function.builtin.sofinco
+    - match: '\b(urutki|balikkidaptar|bukka|baca_berkas|baca|tulis|tutup|bacabarisa|bacasemua)\b'
+      scope: support.function.builtin.sofinco
+    - match: '\b(tambai|burakne|urutkanki|balikidaptar|sisipki|hapuski|bersihki)\b'
+      scope: support.function.builtin.sofinco
+    - match: '\b(hitungki|indexki|sappai|gantiki|lompo|ciddi|pecaki|gabungki)\b'
+      scope: support.function.builtin.sofinco
+    - match: '\b(hitungurut|gabung_daptar|petakan|saring|semua|ada|mutlak|bulatki|pangkat)\b'
+      scope: support.function.builtin.sofinco
+    - match: '\b(tipe|daftar_atribut|variabel|bantuan|evaluasi|eksekusi|kompilasi|formatki)\b'
+      scope: support.function.builtin.sofinco
+    - match: '\b(karakter|nilai_karakter|heksadesimal|oktal|biner|iris|induk)\b'
+      scope: support.function.builtin.sofinco
+    - match: '\b(kunci|nilai|pasangan|ambilki|perbaharui|salinki|copyaki|extendki)\b'
+      scope: support.function.builtin.sofinco
+    - match: '\b(tambahki|buangki|gabungan|irisan|selisih|selisih_simetris)\b'
+      scope: support.function.builtin.sofinco
+    - match: '\b(kapital|judul|potongki|mulai_dengan|akhiri_dengan|huruf_semua|angka_semua)\b'
+      scope: support.function.builtin.sofinco
+    - match: '\b(huruf_angka|spasi_semua|ciddi_semua|lompo_semua|isi_nol|tengahki)\b'
+      scope: support.function.builtin.sofinco
+    - match: '\b(kiri_rata|kanan_rata|tukar_huruf|enkode|dekode)\b'
+      scope: support.function.builtin.sofinco
+    - match: '(?<=pangngaseng\s)\w+|(?<=pangngadereng\s)\w+'
+      scope: entity.name.function.sofinco
+
+  types:
+    - match: '\b(bilanga|uwinru|aksara|sura|desimal|daptar|kumpulan|tupel|peta|pada|himpunan|bolean|bytes|objek)\b'
+      scope: support.type.sofinco
+    - match: '(?<=kelas\s)\w+|(?<=pangngassengang\s)\w+'
+      scope: entity.name.class.sofinco
+
+  operators:
+    - match: '\b(rilaleng|taniarilaleng|sisamaya|taniasisamaya|dan|atau|tania)\b'
+      scope: keyword.operator.logical.sofinco
+    - match: '[+\-*/%]'
+      scope: keyword.operator.arithmetic.sofinco
+    - match: '(==|!=|<|>|<=|>=)'
+      scope: keyword.operator.comparison.sofinco
+    - match: '='
+      scope: keyword.operator.assignment.sofinco
+
+  numbers:
+    - match: '\b0[xX][0-9a-fA-F]+\b'
+      scope: constant.numeric.hex.sofinco
+    - match: '\b0[oO][0-7]+\b'
+      scope: constant.numeric.octal.sofinco
+    - match: '\b0[bB][01]+\b'
+      scope: constant.numeric.binary.sofinco
+    - match: '\b[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?\b'
+      scope: constant.numeric.sofinco
